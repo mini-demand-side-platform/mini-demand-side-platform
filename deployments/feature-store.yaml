@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: feature-store
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: feature-store
+  template:
+    metadata:
+      labels:
+        app: feature-store
+    spec:
+      containers:
+      - name: feature-store
+        image: raywu60kg/feature-store
+        ports:
+        - containerPort: 8000
+        env:
+        - name: olap_host
+          value: postgresql
+        - name: cache_host
+          value: redis
+      restartPolicy: Always

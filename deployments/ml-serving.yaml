@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ml-serving
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ml-serving
+  template:
+    metadata:
+      labels:
+        app: ml-serving
+    spec:
+      containers:
+      - name: ml-serving
+        image: raywu60kg/ml-serving
+        ports:
+        - containerPort: 8002
+        env:
+        - name: object_storage_host
+          value: minio
+      restartPolicy: Always

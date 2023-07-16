@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bidding-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bidding-server
+  template:
+    metadata:
+      labels:
+        app: bidding-server
+    spec:
+      containers:
+      - name: bidding-server
+        image: raywu60kg/bidding-server
+        ports:
+        - containerPort: 8003
+        env:
+        - name: oltp_host
+          value: postgresql
+        - name: feature_store_hostname
+          value: feature-store
+        - name: model_hostname
+          value: ml-serving
+      restartPolicy: Always

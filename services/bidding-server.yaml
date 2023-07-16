@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: bidding-server
+spec:
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 8003
+      targetPort: 8003
+  selector:
+    app: bidding-server

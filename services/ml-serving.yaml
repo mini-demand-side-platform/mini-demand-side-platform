@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ml-serving
+spec:
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 8002
+      targetPort: 8002
+  selector:
+    app: ml-serving

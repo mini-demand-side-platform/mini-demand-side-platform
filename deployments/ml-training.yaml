@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ml-training
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ml-training
+  template:
+    metadata:
+      labels:
+        app: ml-training
+    spec:
+      containers:
+      - name: ml-training
+        image: raywu60kg/ml-training
+        ports:
+        - containerPort: 8001
+        env:
+        - name: olap_host
+          value: postgresql
+        - name: object_storage_host
+          value: minio
+      restartPolicy: Always
