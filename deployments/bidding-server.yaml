@@ -21,9 +21,9 @@ spec:
         - name: oltp_host
           value: postgresql
         - name: feature_store_hostname
-          value: feature-store-ingress
+          value: feature-store-service
         - name: model_hostname
-          value: ml-serving-ingress
+          value: ml-serving-service
       restartPolicy: Always
 
 

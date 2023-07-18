@@ -12,13 +12,11 @@ check-services:
 
 deploy-all:
 	minikube kubectl -- apply -f deployments
-	minikube kubectl -- apply -f ingresses
+	minikube kubectl -- apply -f hpas
 	minikube kubectl -- apply -f services
 
 kill-all:
 	minikube kubectl -- delete deployments
-	minikube kubectl -- delete ingresses
+	minikube kubectl -- delete hpas
 	minikube kubectl -- delete services
 	
-port-forwarding-all:
-	minikube kubectl -- apply -f services
