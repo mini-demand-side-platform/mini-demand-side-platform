@@ -22,7 +22,7 @@ This is a compact [demand-side platform](https://en.wikipedia.org/wiki/Demand-si
 ## Usages
 #### 1. Train a new model
 Training a new model with folling command. The new model will immediately replace the old one.
-```
+```bash
 curl -X 'POST' \
   'http://localhost:8001/model_training' \
   -H 'accept: application/json' \
@@ -36,7 +36,7 @@ curl -X 'POST' \
 #### 2. Make Bid
 Sending the bid request to the bidding server. It will return the most suitable ad in the database and the decided price.
 
-```
+```bash
 curl -X 'POST' \
   'http://localhost:8003/bw_dsp' \
   -H 'accept: application/json' \
@@ -75,37 +75,38 @@ make run-all-with-example-data
 ```
 
 #### 2. Start minikube
-```
+```bash
 minikube start --cpus 4 --network mini-demand-side-platform --memory 4096 
 ```
 Sometime, minikube might create the server on the used `static-ip`. It will cause an error. Therefore, if it happens, you can try to specify a `static-ip` to avoid it. 
 
 Use this command line to check the ip be used.
-```
+```bash
 docker inspect -f '{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aq)
 ```
 
 Run the minikube with specific `static-ip`
-```
+```bash
 minikube start --cpus 4 --network mini-demand-side-platform --memory 4096 --static-ip <static-ip>
 ```
 
 #### 3. Start minikube tunnel for loadBalancer
-```
+```bash
 minikube tunnel
 ```
 
 #### 4. Deploy all the service
-```
+```bash
 make deploy-all
 ```
 
 #### 5. Close up
-
-```
+Kill all the service.
+```bash
 make kill-all
 ```
 
-```
+Delete minikube cluster.
+```bash
 minikube delete
 ```
