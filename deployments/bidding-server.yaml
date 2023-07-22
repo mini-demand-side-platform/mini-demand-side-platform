@@ -24,6 +24,8 @@ spec:
           value: feature-store-service
         - name: model_hostname
           value: ml-serving-service
+        - name: feature_store_id
+          value: cdc74d4c
       restartPolicy: Always
 
 
