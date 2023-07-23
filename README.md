@@ -1,6 +1,6 @@
 # Mini Demand-Side Platform
 ![image](pictures/mini-dsp.jpg)
-This is a compact [demand-side platform](https://en.wikipedia.org/wiki/Demand-side_platform) (DSP) operating on a Kubernetes cluster, accompanied by a custom [feature store](https://www.featurestore.org/what-is-a-feature-store#:~:text=The%20Feature%20Store%20is%20where,that%20have%20a%20trained%20model).) service. The platform incorporates a machine learning module capable of making click-through-rate (CTR) predictions using historical data. Additionally, it utilizes a straightforward bidding logic to determine the most suitable ad among all the available options. For more information on demand-side platforms.
+This is a compact [demand-side platform](https://en.wikipedia.org/wiki/Demand-side_platform) (DSP) operating on a Kubernetes cluster, accompanied by a custom [feature store](https://www.featurestore.org/what-is-a-feature-store#:~:text=The%20Feature%20Store%20is%20where,that%20have%20a%20trained%20model) service. The platform incorporates a machine learning module capable of making click-through-rate (CTR) predictions using historical data. Additionally, it utilizes a straightforward bidding logic to determine the most suitable ad among all the available options.
 
 ## Modules
 - [Feature store](https://github.com/mini-demand-side-platform/feature-store)
@@ -21,7 +21,7 @@ This is a compact [demand-side platform](https://en.wikipedia.org/wiki/Demand-si
 
 ## Usages
 #### 1. Train a new model
-Training a new model with folling command. The new model will immediately replace the old one.
+Training a new model with the following command. The new model will immediately replace the old one.
 ```bash
 curl -X 'POST' \
   'http://localhost:8001/model_training' \
@@ -59,7 +59,7 @@ http://localhost:8000/docs
 ```
 
 See the [mini-demand-side-platform/research](https://github.com/mini-demand-side-platform/research) for example.
-## Requirments
+## Requirements
 - Docker 
 - Docker-compose 
 - minikube(Docker)
@@ -67,7 +67,7 @@ See the [mini-demand-side-platform/research](https://github.com/mini-demand-side
 
 ## Setup
 
-#### 1. Active databases
+#### 1. Activate databases 
 ```bash
 git clone git@github.com:mini-demand-side-platform/databases.git
 cd databases 
@@ -78,9 +78,9 @@ make run-all-with-example-data
 ```bash
 minikube start --cpus 4 --network mini-demand-side-platform --memory 4096 
 ```
-Sometime, minikube might create the server on the used `static-ip`. It will cause an error. Therefore, if it happens, you can try to specify a `static-ip` to avoid it. 
+Sometimes, minikube might create the server on the used `static-ip`. It will cause an error. Therefore, if it happens, you can try to specify a `static-ip` to avoid it. 
 
-Use this command line to check the ip be used.
+Use this command line to check if the ip is used.
 ```bash
 docker inspect -f '{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aq)
 ```
